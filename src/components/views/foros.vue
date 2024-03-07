@@ -1,7 +1,7 @@
 <template>
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img :src="`/img/3Dteca.png`" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando">
       <p>Cargando...</p>
     </div>
   </template>
@@ -97,11 +97,15 @@ import 'regenerator-runtime/runtime'
 import { collection, addDoc, getDocs, Timestamp, query, orderBy } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import profile from '../../../public/img/default.png';
+import favicon_sin_name_white from "../../../public/img/favicon_sin_name_white.png";
+import loadingIMG from "../../../public/img/3Dteca.png"
 
 export default {
 name: 'foro',
 data() {
   return {
+    loadingIMG,
+    favicon_sin_name_white,
     isLoading: true,
     msgValidar: false,
     profileDataImg: null,
