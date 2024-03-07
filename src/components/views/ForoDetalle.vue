@@ -2,7 +2,7 @@
 
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img :src="`/img/3Dteca.png`" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando">
       <p>Cargando...</p>
     </div>
   </template>
@@ -62,7 +62,7 @@
       </div>
       <div class="divButtonMsg d-flex justify-content-end">
         <button type="submit" class="btn btn-success send">
-          <img src="/img/send-white.png" alt="Enviar" class="send-button-icon">
+          <img v-bind:srcset="sendIMG" alt="Enviar" class="send-button-icon">
         </button>
       </div>
       </div>
@@ -78,11 +78,15 @@
 import { doc, collection, addDoc, getDoc, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import useAuth from "../../composition/useAuth.js";
+import loadingIMG from "../../../public/img/3Dteca.png";
+import sendIMG from "../../../public/img/send-white.png"
 
 export default {
 name: 'ForoDetalle',
 data() {
   return {
+    sendIMG,
+    loadingIMG,
     isLoading: true,
     formatDate:'',
     foro: {},

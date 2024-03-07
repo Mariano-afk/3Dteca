@@ -98,7 +98,7 @@ import { collection, addDoc, getDocs, Timestamp, query, orderBy } from 'firebase
 import { db } from '../../services/firebase';
 import profile from '../../../public/img/default.png';
 import favicon_sin_name_white from "../../../public/img/favicon_sin_name_white.png";
-import loadingIMG from "../../../public/img/3Dteca.png"
+import loadingIMG from "../../../public/img/3Dteca.png";
 
 export default {
 name: 'foro',

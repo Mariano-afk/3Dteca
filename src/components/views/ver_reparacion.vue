@@ -1,7 +1,7 @@
 <template>
     <template v-if="isLoading">
       <div class="align-self-center mt-5">
-        <img :src="`/img/3Dteca.png`" alt="logo cargando">
+        <img v-bind:srcset="loadingIMG" alt="logo cargando">
         <p>Cargando...</p>
       </div>
   </template>
@@ -31,10 +31,13 @@
 import 'regenerator-runtime/runtime'
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../services/firebase';
+import loadingIMG from "../../../public/img/3Dteca.png"
+
 export default {
     name: 'cargar_reparacion',
     data() {
         return {
+          loadingIMG,
             isLoading: true,
           reparaciones: [],
           reparacion: {

@@ -1,7 +1,7 @@
 <template>
    <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img :src="`/img/3Dteca.png`" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando">
       <p>Cargando...</p>
     </div>
   </template>
@@ -92,12 +92,15 @@
   import { db } from '../../services/firebase';
   import profile from '../../../public/img/default.png';
   import slide from '../../../public/img/default-slide.png';
+  import loadingIMG from "../../../public/img/3Dteca.png"
+
   
   
   export default {
     name: 'lista_favoritos',
     data() {
       return {
+        loadingIMG,
         isLoading: true,
         userMail: ref(''),
         profileDataImg: null,

@@ -1,7 +1,7 @@
 <template>
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img :src="`/img/3Dteca.png`" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando">
       <p>Cargando...</p>
     </div>
   </template>
@@ -30,7 +30,7 @@
       </div>
       <div class="divButtonMsg d-flex justify-content-end">
         <button type="submit" class="btn btn-success send">
-          <img src="/img/send-white.png" alt="Enviar" class="send-button-icon">
+          <img v-bind:srcset="sendIMG" alt="Enviar" class="send-button-icon">
         </button>
       </div>
       </div>
@@ -45,11 +45,15 @@
 import { addDoc, collection, Timestamp, query, where, getDocs, onSnapshot, orderBy } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import {authStateSubscribe} from "../../services/auth.js";
+import loadingIMG from "../../../public/img/3Dteca.png"
+import sendIMG from "../../../public/img/send-white.png"
 
 export default {
 name: 'PrivateChat',
 data() {
   return {
+    sendIMG,
+    loadingIMG,
     isLoading: true,
     chatId:'',
     profileUserMail: '',

@@ -6,7 +6,7 @@
 
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-    <img :src="`/img/3Dteca.png`" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando">
     <p>Cargando...</p>
     </div>
   </template>
@@ -64,7 +64,7 @@
     <div id="app">
   <!-- Botón circular -->
   <button class="floating-button" @click="toggleChats">
-    <img src="/img/chats-white.png">
+    <img v-bind:srcset="chatImg" alt="chat">
   </button>
     <div class="chats-container" :class="{ 'visible': showChats }">
       <h2 class="visually-hidden align-self-center my-5">Tus chats</h2>
@@ -194,11 +194,16 @@ import { db, storageRef } from '../../services/firebase';
 import routes from '../../router/router';
 import profile from '../../../public/img/default.png';
 import slide from '../../../public/img/default-slide.png';
+import loadingIMG from "../../../public/img/3Dteca.png"
+import chatImg from "../../../public/img/chats-white.png"
+
 
 export default {
 name: 'lista_favoritos',
 data() {
   return {
+    chatImg,
+    loadingIMG,
     showChats: false,
     isLoading: true,
     chats:[],

@@ -4,7 +4,7 @@
   </template>
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img :src="`/img/3Dteca.png`" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando">
       <p>Cargando...</p>
     </div>
   </template>
@@ -47,10 +47,13 @@ import { collection, getDocs, doc, arrayUnion, updateDoc } from 'firebase/firest
 import { db } from '../../services/firebase';
 import routes from '../../router/router';
 import useAuth from "../../composition/useAuth.js";
+import loadingIMG from "../../../public/img/3Dteca.png"
+
 export default {
     name: 'cargar_impresoras',
     data() {
         return {
+          loadingIMG,
           msg: false,
           isLoading: true,
           impresoras: [],

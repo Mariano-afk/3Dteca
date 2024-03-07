@@ -1,7 +1,7 @@
 <template>
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img :src="`/img/3Dteca.png`" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando">
       <p>Cargando...</p>
     </div>
   </template>
@@ -101,9 +101,11 @@ import diseño3D from "../../../public/img/diseño3D.jpg"
 import reparacion from "../../../public/img/reparacion.jpg"
 import IMG from "../../../public/img/logo-vertical.png"
 import favicon_sin_name_white from "../../../public/img/favicon_sin_name_white.png"
+import loadingIMG from "../../../public/img/3Dteca.png"
 
 export default {
 data: () => ({
+  loadingIMG,
   isLoading: true,
   IMG,
   favicon_sin_name_white,
