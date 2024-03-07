@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "engines": {
-    "node": ">=18.17.0",
-    "npm": ">=18.17.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
