@@ -4,31 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="css" href="../src/styles/main.css">
-    <!-- Enlazar dinámicamente el favicon -->
-    <link rel="shortcut icon" type="image/png" :href="favicon"/>
+    <link rel="shortcut icon" type="image/jpg" srcset="./img/favicon_sin_name.png"/>
     <link rel="preload" as="font" href="./fonts/Elianto-Regular.ttf" type="font/ttf" crossorigin="anonymous">
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
     <div id="root"></div>
-
-    <!-- Importar Vue y la aplicación Vue compilada -->
-    <script src="https://unpkg.com/vue@3.2.20/dist/vue.global.prod.js"></script>
-    <script src="./dist/app.bundle.js"></script>
-
-    <!-- Define la variable favicon con Vue -->
-    <script>
-        import favicon from "./img/favicon.png"
-
-        const app = Vue.createApp({
-            data() {
-                return {
-                    favicon,
-                };
-            },
-        });
-
-        app.mount('#root');
-    </script>
 </body>
 </html>
+
