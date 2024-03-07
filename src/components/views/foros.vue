@@ -1,93 +1,89 @@
 <template>
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img v-bind:srcset="loadingIMG" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando" class="img-fluid">
       <p>Cargando...</p>
     </div>
   </template>
 
   <template v-else>
-
     <div class="jumbotron jumbotron-fluid">
       <img class="img-fluid jumbotron-image pt-4 py-3" v-bind:srcset="favicon_sin_name_white" alt="Imagen de fondo del jumbotron">
       <div class="container banner pb-3">
         <h1 class="display-5 subtitulo-white">FOR<span>O</span>S</h1>
-        <p class="lead">Conectate con los usuarios</p>
+        <p class="lead">Conéctate con los usuarios</p>
       </div>
     </div>
 
     <div class="container my-4">
       <h2 class="align-self-center my-5">Crear foro</h2>
-      <p class="lead align-self-center">Si tenes alguna consulta o algún comentario para ayudar nos encantaria que lo dejes acá abajo, todo aporta a la comunidad!</p>
-
-     
+      <p class="lead align-self-center">Si tienes alguna consulta o algún comentario para ayudar, nos encantaría que lo dejaras abajo. ¡Todo aporta a la comunidad!</p>
 
       <form class="form-foros align-self-center" @submit.prevent="validarYAgregarDato">  
-
-
         <template v-if="msgValidar === true">
-        <div id="mensaje" class="mensaje-error mb-3">Para crear un foro tiene que tener un tema y una Descripción</div>
-    </template>
+          <div id="mensaje" class="mensaje-error mb-3">Para crear un foro, debes tener un tema y una descripción</div>
+        </template>
     
-      <div class="input-group mb-3">
-        <span class="input-group-text">Tema</span>
-        <input v-model="foro.nombre" type="text" class="form-control">
-      </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Tema</span>
+          <input v-model="foro.nombre" type="text" class="form-control">
+        </div>
 
-      <div class="input-group mb-3">
-        <span class="input-group-text">Descripción</span>
-        <textarea v-model="foro.descripcion" type="text" class="form-control"></textarea>
-      </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Descripción</span>
+          <textarea v-model="foro.descripcion" type="text" class="form-control"></textarea>
+        </div>
 
         <div class="mt-3">  
-          <button
-            class="btn btn-primary">
-            Abrir discusión
-          </button>
+          <button class="btn btn-primary">Abrir discusión</button>
         </div>
       </form>
 
-  <h2 class="align-self-center my-5">Listado de foros</h2>
+      <h2 class="align-self-center my-5">Listado de foros</h2>
 
       <div>
         <input type="text" v-model="busqueda" class="form-control mb-3" placeholder="Buscar por nombre...">
       </div>
 
-<table class="table">
-  <thead>
-    <tr scope="row">
-      <th scope="col">Nombre</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">Autor</th>
-      <th scope="col">Fecha</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="(item, index) in forosPaginados" :key="index">
-      <td class="truncate">{{ item.nombre }}</td>
-      <td class="truncate">{{ item.descripcion }}</td>
-      <td>{{ item.creador }}</td>
-      <td>{{ formatDate(item.created_at) }}</td>
-      <td>
-        <router-link class="btn btn-primary" :to="{ name: 'ForoDetalle', params: { id: item.id }}">Ver</router-link>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr scope="row">
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Autor</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in forosPaginados" :key="index">
+              <td class="truncate">{{ item.nombre }}</td>
+              <td class="truncate">{{ item.descripcion }}</td>
+              <td>{{ item.creador }}</td>
+              <td>{{ formatDate(item.created_at) }}</td>
+              <td>
+                <router-link class="btn btn-primary" :to="{ name: 'ForoDetalle', params: { id: item.id }}">Ver</router-link>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-<div>
-  <!-- Componente de paginación -->
-  <nav aria-label="Page navigation">
-    <ul class="pagination">
-      <li class="page-item" v-for="pageNumber in totalPages" :key="pageNumber" :class="{ active: currentPage === pageNumber }">
-        <a class="page-link" @click="currentPage = pageNumber">{{ pageNumber }}</a>
-      </li>
-    </ul>
-  </nav>
-</div>
+      <div>
+        <!-- Componente de paginación -->
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item" v-for="pageNumber in totalPages" :key="pageNumber" :class="{ active: currentPage === pageNumber }">
+              <a class="page-link" @click="currentPage = pageNumber">{{ pageNumber }}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </template>
 </template>
+
 
 <script>
 
@@ -231,7 +227,17 @@ async agregarForo() {
 },
 
 mounted() {
-  this.obtenerDatos();
+  this.isLoading = true;
+
+      if (localStorage.getItem('foros')) {
+        this.foros = JSON.parse(localStorage.getItem('foros'));
+        this.isLoading = false;
+      } else {
+        this.obtenerDatos().then(() => {
+          localStorage.setItem('foros', JSON.stringify(this.foros));
+          this.isLoading = false;
+        });
+      }
 },
 
 setup() {

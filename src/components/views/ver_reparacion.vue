@@ -1,7 +1,7 @@
 <template>
     <template v-if="isLoading">
       <div class="align-self-center mt-5">
-        <img v-bind:srcset="loadingIMG" alt="logo cargando">
+        <img v-bind:srcset="loadingIMG" alt="logo cargando" class="img-responsive">
         <p>Cargando...</p>
       </div>
   </template>
@@ -60,7 +60,17 @@ export default {
     }
     },
     mounted() {
-        this.obtenerDatos();
+      this.isLoading = true;
+
+if (localStorage.getItem('reparaciones')) {
+  this.reparaciones = JSON.parse(localStorage.getItem('reparaciones'));
+  this.isLoading = false;
+} else {
+  this.obtenerDatos().then(() => {
+    localStorage.setItem('reparaciones', JSON.stringify(this.reparaciones));
+    this.isLoading = false;
+  });
+}
     },
 }
 </script>

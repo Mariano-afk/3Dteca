@@ -56,6 +56,11 @@ html, body, #root {
 	color: #D17A35;
 }
 
+.img-responsive {
+	max-width: 100%;
+	height: auto;
+}
+
 .truncate {
 	max-width: 200px; /* Ancho máximo de la celda */
 	white-space: nowrap; /* Evitar el salto de línea */
@@ -67,7 +72,6 @@ html, body, #root {
 	width: 100%;
 	background-color: #D17A35;
 	text-align: center; 
-	
 }
 
 .card-title{
@@ -172,4 +176,5 @@ html, body, #root {
 	  }
   }
 
+  
 

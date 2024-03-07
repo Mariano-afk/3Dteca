@@ -6,61 +6,37 @@
 
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img v-bind:srcset="loadingIMG" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando" class="img-responsive">
     <p>Cargando...</p>
     </div>
   </template>
 
   <template v-else>
 
-    <h1 class="visually-hidden align-self-center mb-3">Tú perfil</h1>
-
-      <div class="d-flex justify-content-center">
-        <div class="parent">
-          <div class="div1">
-
-            <template v-if="userData.portada == '' || null">
-              <a v-for="item in slide" :key="item" class="navbar-brand">
-                <img id="slide" v-bind:srcset="item.img"/>
-              </a>
-            </template>
-
-            <template v-else>
-            <a class="navbar-brand m-0">
-              <img id="slide" class="portada" :src="userData.portada"/>
-            </a>
-            </template>
-
-            </div>
-            <div class="profilePicAuthUser">
-
-            <template v-if="userData.foto == '' || null">
-              <a v-for="item in profile" :key="item" class="navbar-brand">
-                <img id="profile imgCircular" v-bind:srcset="item.img"/>
-              </a>
-            </template>
-
-            <template v-else>
-              <a class="navbar-brand">
-                <img id="profile" class="profile imgCircular" :src="userData.foto"/>
-              </a>
-            </template>
-
-            </div>
-            <div class="div3 mt-3">
-              <h2>{{ userDataSave.displayName }}</h2>
-            </div>
-            <div class="div4">
-              <button class="btn btn-secondary mt-3" onclick="window.modal.showModal();">Editar perfil</button>
-            </div>
-        </div>
-      </div>
-    <div class="d-flex justify-content-center">
-      <div class="div5">
-        <p class="font-italic">{{ userDataSave.bio }}</p>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container banner p-5">
+        <h1 class="display-4 subtitulo-white">TUS DAT<span>O</span>S</h1>
       </div>
     </div>
+    <div class="d-flex justify-content-center align-items-center">
+             <div class="card">
+              <div class="upper">
+                <img :src="userData.portada" class="img-fluid">
+                <div class="user text-center">
+                  <img :src="userData.foto" class="rounded-circle" width="200">
+                </div>
+              </div>
 
+              <div class="mt-5 pt-5 text-center align-self-center">
+                <h4 class="mb-0 mt-4">{{ userDataSave.displayName }}</h4>
+                <span class="text-muted d-block mb-2">{{ userData.email }}</span>
+                <span class="text-muted d-block mb-2 bioProfile">{{ userData.bio }}</span>
+                <button class="btn btn-secondary mt-3" onclick="window.modal.showModal();">Editar perfil</button>
+                <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+                </div>
+              </div>
+             </div>
+           </div>
     <div id="app">
   <!-- Botón circular -->
   <button class="floating-button" @click="toggleChats">
@@ -152,15 +128,20 @@
   </dialog>
 
 
-    <div class="container my-5">
+    
       <template v-if="impresoras.length !== 0">
-        <h2 class="align-self-center">Favoritos</h2>
+        <div class="jumbotron jumbotron-fluid mt-5">
+          <div class="container banner p-5">
+            <h2 class="display-4 subtitulo-white">FAVORIT<span>O</span>S</h2>
+          </div>
+        </div>
       </template>
 
       <template v-else>
         <p class="align-self-center">Tu perfil parece vacio, date una vuelta por la seccion de impresoras para agregar a favoritos :D</p>
       </template>
 
+      <div class="container my-5">
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col" v-for="(item, index) in impresoras" :key="index">
           <div class="card">
@@ -590,6 +571,7 @@ return {
   max-height: calc(100vh - 200px);
   overflow-y: auto;
   display: none;
+  z-index: 999;
 }
 
 /* Estilos para mostrar el contenedor de los chats */
@@ -600,5 +582,24 @@ return {
 .floating-button img {
   width: 20px;
   height: 20px;
+}
+
+.bioProfile{
+  max-width: 550px;
+}
+
+.upper {
+  position: relative;
+}
+
+.user img {
+  position: absolute;
+  top: 65%; /* Ubica la foto de perfil a un 50% de su altura desde arriba */
+  left: 50%;
+  transform: translateX(-50%); /* Centra la foto de perfil horizontalmente */
+}
+
+.background-card{
+  background-color: #D17A35;
 }
 </style>

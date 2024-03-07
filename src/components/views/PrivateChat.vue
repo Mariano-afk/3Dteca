@@ -1,7 +1,7 @@
 <template>
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img v-bind:srcset="loadingIMG" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando" class="img-responsive">
       <p>Cargando...</p>
     </div>
   </template>
@@ -9,7 +9,7 @@
     <div class="container my-4">
       <h1>Chat con: {{ profileUserMail }}</h1>
 
-      <div class="chat mb-5">
+      <div class="chat mb-5" :style="{ backgroundImage: 'url(' + loadingIMG + ')' }">
         <div v-for="(mensaje, index) in mensajes.slice().reverse()" :key="index">
           <div :class="mensaje.id_autor === currentUser.id ? 'msgU1' : 'msgU2'">
             <div class="message-box">

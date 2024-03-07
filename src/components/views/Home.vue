@@ -1,7 +1,7 @@
 <template>
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img v-bind:srcset="loadingIMG" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando" class="img-responsive">
       <p>Cargando...</p>
     </div>
   </template>

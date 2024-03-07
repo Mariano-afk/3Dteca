@@ -2,7 +2,7 @@
 
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img v-bind:srcset="loadingIMG" alt="logo cargando">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando" class="img-responsive">
       <p>Cargando...</p>
     </div>
   </template>
@@ -11,15 +11,15 @@
 
   <div class="container my-4">
 
-    <div class="row align-self-center mb-5">
+    <div class="dataforo row align-self-center mb-5">
       <h1 class="col-12 mb-5">Título: {{ foro.nombre }}</h1>
-      <p class="col-12 mb-5">Descripción: {{ foro.descripcion }}</p>
-      <p class="col-6">Foro abierto el: {{ formatDate }}</p>
-      <p class="col-6">Creado por: {{ foro.creador }}</p>
+      <p class="blockquote col-12 mb-5">Descripción: {{ foro.descripcion }}</p>
+      <p class="blockquote col-6">Foro abierto el: {{ formatDate }}</p>
+      <p class="blockquote col-6">Creado por: {{ foro.creador }}</p>
     </div>
 
   <div class="chat-container">
-        <div class="chat">
+        <div class="chat" :style="{ backgroundImage: 'url(' + loadingIMG + ')' }">
           <template v-for="(mensaje, index) in mensajes">
       <template v-if="mensaje.id_autor == authUser.id">
         <div class="msgU1">
@@ -265,4 +265,16 @@ methods: {
 
 .divInputMsg { grid-area: 1 / 1 / 2 / 2; }
 .divButtonMsg { grid-area: 1 / 2 / 2 / 3; }
+
+.dataforo{
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 3%;
+}
+
+.chat{
+  background-size: contain; /* Ajusta el tamaño para cubrir todo el contenedor */
+  background-position: center; /* Centra la imagen de fondo */
+  background-repeat: no-repeat;
+}
 </style>
