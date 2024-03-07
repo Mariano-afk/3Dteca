@@ -19,7 +19,7 @@
     </div>
 
   <div class="chat-container">
-        <div class="chat" >
+        <div class="chat" :style="{ backgroundImage: 'url(' + loadingIMG + ')' }">
           <template v-for="(mensaje, index) in mensajes">
       <template v-if="mensaje.id_autor == authUser.id">
         <div class="msgU1">
