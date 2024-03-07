@@ -59,6 +59,7 @@ export default {
       this.isLoading = false;
     }
     },
+    
     mounted() {
       this.isLoading = true;
 
