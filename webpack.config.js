@@ -48,7 +48,18 @@ module.exports = {
             {test: /\.(stl)$/,
                 loader: 'url-loader',
             },
-            
+            {
+                test: /\.(png|jpeg|jpg|gif)$/i,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                      name: '[name].[ext]',
+                      outputPath: 'public/img', // Carpeta de salida para las imágenes
+                    },
+                  },
+                ],
+              },
             
         ],
     },
