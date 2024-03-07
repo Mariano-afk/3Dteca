@@ -9,7 +9,7 @@
   <template v-else>
 
     <div class="jumbotron jumbotron-fluid">
-      <img class="img-fluid jumbotron-image pt-4 py-3" src="img/favicon_sin_name_white.png" alt="Imagen de fondo del jumbotron">
+      <img class="img-fluid jumbotron-image pt-4 py-3" v-bind:srcset="favicon_sin_name_white" alt="Imagen de fondo del jumbotron">
       <div class="container banner pb-3">
         <h1 class="display-5 subtitulo-white">FOR<span>O</span>S</h1>
         <p class="lead">Conectate con los usuarios</p>

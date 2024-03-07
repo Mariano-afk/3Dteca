@@ -8,7 +8,7 @@
   <template v-else>
 
     <div class="jumbotron jumbotron-fluid">
-      <img class="img-fluid jumbotron-image pt-4 py-3" v-bind:srcset="favicon_sin_name_white" alt="Imagen de fondo del jumbotron">
+      <img class="img-fluid jumbotron-image pt-4 py-3" v-bind:srcset="favicon_sin_name_white" alt="logo de 3Dteca">
       <div class="container banner pb-3">
         <h1 class="display-5 subtitulo-white">Bienvenido a 3DTE<span>C</span>A</h1>
         <p class="lead">La web más completa sobre el mundo 3D</p>
