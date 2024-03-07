@@ -31,9 +31,9 @@ module.exports = {
             },
             
             {test: /\.(png|jpeg|jpg|gif)$/i,
-                loader: 'url-loader',
+                loader: 'file-loader',
                 options:{
-                    name:'img/[hash]-[name].[ext]'
+                    name:'assets/img/[name].[ext]'
                 }
             },
 

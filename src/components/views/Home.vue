@@ -106,6 +106,7 @@ export default {
 data: () => ({
   isLoading: true,
   IMG,
+  favicon_sin_name_white,
   fotos: [
   {
     titulo:'IMPRESORAS',
