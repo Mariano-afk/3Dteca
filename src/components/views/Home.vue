@@ -78,7 +78,7 @@
             <div class=" col-md-12 col-lg-6 col-xl text-wrap align-self-center mx-auto mb-5 d-flex justify-content-center">
               <router-link :to="fotos[4].path">
               <picture class="d-flex justify-content-center categoria" >
-                <img class="obs" v-bind:srcset="fotos[4].img" />  
+                <img class="obs" src="img/reparacion.jpg" /> 
                 <div class="oferta-titulos">
                   <h3>REPARACI<span>Ó</span>N</h3>
                 </div>
