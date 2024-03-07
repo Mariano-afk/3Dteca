@@ -8,7 +8,7 @@
   <template v-else>
 
     <div class="jumbotron jumbotron-fluid">
-      <img class="img-fluid jumbotron-image pt-4 py-3" src="img/favicon_sin_name_white.png" alt="Imagen de fondo del jumbotron">
+      <img class="img-fluid jumbotron-image pt-4 py-3" v-bind:srcset="favicon_sin_name_white" alt="Imagen de fondo del jumbotron">
       <div class="container banner pb-3">
         <h1 class="display-5 subtitulo-white">Bienvenido a 3DTE<span>C</span>A</h1>
         <p class="lead">La web más completa sobre el mundo 3D</p>
@@ -100,6 +100,7 @@ import configuracion from "../../../public/img/configuracion.jpg"
 import diseño3D from "../../../public/img/diseño3D.jpg"
 import reparacion from "../../../public/img/reparacion.jpg"
 import IMG from "../../../public/img/logo-vertical.png"
+import favicon_sin_name_white from "../../../public/img/favicon_sin_name_white.png"
 
 export default {
 data: () => ({
