@@ -10,15 +10,16 @@
 
     <div class="jumbotron jumbotron-fluid">
           <div class="container banner p-5">
-            
           </div>
         </div>
     <div class="d-flex justify-content-center align-items-center">
              <div class="card">
               <div class="upper">
-                <img :src="userData.portada" class="img-fluid">
+                <img v-if="userData.portada == '' " :src="slide" class="img-fluid">
+                <img v-else :src="userData.portada" class="img-fluid">
                 <div class="user text-center">
-                  <img :src="userData.foto" class="rounded-circle" width="200">
+                    <img  v-if="userData.foto == '' " :src="profile" class="rounded-circle" width="200">
+                    <img v-else :src="userData.foto" class="rounded-circle" width="200">
                 </div>
               </div>
 
@@ -26,6 +27,9 @@
                 <h4 class="mb-0 mt-4">{{ userDataSave.displayName }}</h4>
                 <span class="text-muted d-block mb-2">{{ userData.email }}</span>
                 <span class="text-muted d-block mb-2 bioProfile">{{ userData.bio }}</span>
+                <router-link class="btn btn-secondary mb-4" v-if="userData.email" :to="{ name: 'chatUser', params: { email: userData.email } }">
+                  Chatear con: {{ userData.displayName }}
+                </router-link>
               </div>
              </div>
            </div>
@@ -81,6 +85,8 @@
     name: 'lista_favoritos',
     data() {
       return {
+        profile,
+        slide,
         loadingIMG,
         isLoading: true,
         userMail: ref(''),
@@ -99,12 +105,6 @@
         portada:'',
         email:'',
         },
-        profile: [
-          { img:profile },
-        ],
-        slide: [
-          { img:slide },
-        ],
         impresoras: [],
         impresora: {
           favoritos: {},
