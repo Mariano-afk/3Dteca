@@ -43,7 +43,7 @@
     "bootstrap": "^5.1.1",
     "file-loader": "^6.2.0",
     "firebase": "^9.3.0",
-    "node": "^14.18.1",
+    "node": "^18.17.0",
     "regenerator-runtime": "^0.13.11",
     "three": "^0.162.0",
     "url-loader": "^4.1.1",
