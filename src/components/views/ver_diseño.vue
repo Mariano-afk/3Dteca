@@ -61,16 +61,7 @@ export default {
     },
     mounted() {
       this.isLoading = true;
-
-if (localStorage.getItem('diseños')) {
-  this.diseños = JSON.parse(localStorage.getItem('diseños'));
-  this.isLoading = false;
-} else {
-  this.obtenerDatos().then(() => {
-    localStorage.setItem('diseños', JSON.stringify(this.diseños));
-    this.isLoading = false;
-  });
-}
+      this.obtenerDatos()
     },
 }
 </script>

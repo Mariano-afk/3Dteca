@@ -4,7 +4,7 @@
   </template>
   <template v-if="isLoading">
     <div class="align-self-center mt-5">
-      <img v-bind:srcset="loadingIMG" alt="logo cargando" class="img-responsive">
+      <img v-bind:srcset="loadingIMG" alt="logo cargando">
       <p>Cargando...</p>
     </div>
   </template>
@@ -105,19 +105,7 @@ export default {
     },
     mounted() {
       
-      this.isLoading = true;
-
-      if (localStorage.getItem('impresoras')) {
-        this.impresoras = JSON.parse(localStorage.getItem('impresoras'));
-        this.isLoading = false;
-      } else {
-        this.obtenerDatos().then(() => {
-          localStorage.setItem('impresoras', JSON.stringify(this.impresoras));
-          this.isLoading = false;
-        });
-      }
-
-
+        this.obtenerDatos();
     },
     setup() {
       const {authUser} = useAuth();

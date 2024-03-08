@@ -21,7 +21,7 @@
 
       <form class="form-foros align-self-center" @submit.prevent="validarYAgregarDato">  
         <template v-if="msgValidar === true">
-          <div id="mensaje" class="mensaje-error mb-3">Para crear un foro, debes tener un tema y una descripción</div>
+          <div id="mensaje" class="mensaje-error mb-3">Para crear un foro debe tener un tema y una descripción</div>
         </template>
     
         <div class="input-group mb-3">
@@ -229,16 +229,9 @@ async agregarForo() {
 mounted() {
   this.isLoading = true;
 
-      if (localStorage.getItem('foros')) {
-        this.foros = JSON.parse(localStorage.getItem('foros'));
-        this.isLoading = false;
-      } else {
-        this.obtenerDatos().then(() => {
-          localStorage.setItem('foros', JSON.stringify(this.foros));
-          this.isLoading = false;
-        });
-      }
-},
+        this.obtenerDatos();
+      },
+
 
 setup() {
   const {authUser} = useAuth();
