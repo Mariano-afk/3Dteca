@@ -76,8 +76,16 @@ export default {
     },
     mounted() {
       this.isLoading = true;
-      this.obtenerDatos();
 
+if (localStorage.getItem('configuraciones')) {
+  this.configuraciones = JSON.parse(localStorage.getItem('configuraciones'));
+  this.isLoading = false;
+} else {
+  this.obtenerDatos().then(() => {
+    localStorage.setItem('configuraciones', JSON.stringify(this.configuraciones));
+    this.isLoading = false;
+  });
+}
     },
 }
 </script>

@@ -69,7 +69,16 @@ export default {
     },
     mounted() {
       this.isLoading = true;
-      this.obtenerDatos()
+
+if (localStorage.getItem('filamentos')) {
+  this.filamentos = JSON.parse(localStorage.getItem('filamentos'));
+  this.isLoading = false;
+} else {
+  this.obtenerDatos().then(() => {
+    localStorage.setItem('filamentos', JSON.stringify(this.filamentos));
+    this.isLoading = false;
+  });
+}
         
     },
 }

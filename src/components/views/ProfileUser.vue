@@ -10,8 +10,7 @@
 
     <div class="jumbotron jumbotron-fluid">
           <div class="container banner p-5">
-            <h2 class="display-4 subtitulo-white">DAT<span>O</span>S</h2>
-            <p class="display-5">de: {{ userDataSave.displayName }}</p>
+            
           </div>
         </div>
     <div class="d-flex justify-content-center align-items-center">
