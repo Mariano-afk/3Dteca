@@ -89,6 +89,21 @@
           </div>
         </div>
       </section>
+      <section>
+        <div class="cotainer">
+
+          <div class="backgroundgray align-self-center mb-5 justify-content-center">
+              <picture class="justify-content-center categoria" >
+                <img class="donaciones obs" v-bind:srcset="donaciones" /> 
+                <div class="oferta-titulos">
+                  <h3 class="mb-5">DONACI<span>O</span>NES</h3>
+                  <a class="mb-5 btn btn-primary" href="https://www.mercadopago.com.ar/home" target="_blank">Mercado Pago</a>
+                  <h3>3DTE<span>C</span>A no tiene contenido premium ni de subcripción, dona a consideración</h3>
+                </div>
+              </picture>
+            </div>
+            </div>
+      </section>
   </template>
 </template>
 
@@ -102,9 +117,11 @@ import reparacion from "../../../public/img/reparacion.jpg"
 import IMG from "../../../public/img/logo-vertical.png"
 import favicon_sin_name_white from "../../../public/img/favicon_sin_name_white.png"
 import loadingIMG from "../../../public/img/3Dteca.png"
+import donaciones from "../../../public/img/donaciones.png"
 
 export default {
 data: () => ({
+  donaciones,
   loadingIMG,
   isLoading: true,
   IMG,
@@ -148,6 +165,17 @@ mounted() {
 </script>
 
 
+<style>
+.donaciones{
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+}
+
+.backgroundgray{
+  background-color: #494D4E;
+}
+</style>
  <!-- <router-link
               links 
               v-for="item in fotos"
