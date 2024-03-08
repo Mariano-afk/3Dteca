@@ -98,7 +98,7 @@
                 <div class="oferta-titulos">
                   <h3 class="mb-5">DONACI<span>O</span>NES</h3>
                   <a class="mb-5 btn btn-primary" href="https://www.mercadopago.com.ar/home" target="_blank">Mercado Pago</a>
-                  <h3>3DTE<span>C</span>A no tiene contenido premium ni de subcripción, dona a consideración</h3>
+                  <h3>3DTE<span>C</span>A no tiene contenido premium ni de subscripción, dona a consideración</h3>
                 </div>
               </picture>
             </div>
